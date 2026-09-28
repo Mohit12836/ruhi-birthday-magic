@@ -1,14 +1,14 @@
 // Procedural Web Audio API sound synthesizer & Voice Engine for Ruhi's Birthday Wonder-Verse
-// Requires zero external sound files; instant, crystal-clear, and responsive across all devices.
+// Fully Energetic Party Edition with DJ Air Horn, Drum Beats, High-Tempo Party Remix, and Energetic Voiceover!
 
-export type BGMTrack = 'bday_song' | 'starlight' | 'royal';
+export type BGMTrack = 'party_remix' | 'bday_song' | 'starlight' | 'royal';
 
 class BirthdayAudioEngine {
   private ctx: AudioContext | null = null;
   private isMuted: boolean = false;
   private bgLoopInterval: number | null = null;
   private isPlayingBgm: boolean = false;
-  private currentTrack: BGMTrack = 'bday_song';
+  private currentTrack: BGMTrack = 'party_remix'; // Default to FULL ENERGETIC PARTY REMIX!
   private voiceEnabled: boolean = true;
   private isSpeaking: boolean = false;
 
@@ -44,7 +44,7 @@ class BirthdayAudioEngine {
       this.stopBackgroundMelody();
       this.stopSpeaking();
     } else {
-      this.playChime(523.25); // C5
+      this.playAirHorn();
       this.startBackgroundMelody();
     }
     return this.isMuted;
@@ -90,7 +90,7 @@ class BirthdayAudioEngine {
   }
 
   // ==========================================
-  // VOICE SYNTHESIS ENGINE (Hindi / Hinglish Warm Sisterly Narration)
+  // ENERGETIC VOICE SYNTHESIS ENGINE
   // ==========================================
   public speak(text: string, onEnd?: () => void) {
     if (this.isMuted || !this.voiceEnabled || typeof window === 'undefined') return;
@@ -100,14 +100,14 @@ class BirthdayAudioEngine {
       window.speechSynthesis.cancel(); // Stop any pending speech
 
       const cleanText = text
-        .replace(/[*_#👑✨🌹🎉🎂❤️🎈]/g, '')
+        .replace(/[*_#👑✨🌹🎉🎂❤️🎈⚡💥]/g, '')
         .replace(/—/g, ', ')
         .trim();
 
       const utterance = new SpeechSynthesisUtterance(cleanText);
       const voices = window.speechSynthesis.getVoices();
 
-      // Look for Hindi voice or Indian English voice
+      // Look for energetic pleasant voice
       const preferredVoice =
         voices.find((v) => v.lang.includes('hi') || v.lang.includes('hi_IN')) ||
         voices.find((v) => v.lang.includes('en-IN') || v.name.includes('India')) ||
@@ -118,9 +118,9 @@ class BirthdayAudioEngine {
         utterance.voice = preferredVoice;
       }
 
-      utterance.rate = 0.92; // Sweet, emotional, slow pacing
-      utterance.pitch = 1.08; // Warm and pleasant tone
-      utterance.volume = 0.9;
+      utterance.rate = 1.05; // Energetic, lively tempo!
+      utterance.pitch = 1.15; // Upbeat, happy, celebratory pitch!
+      utterance.volume = 1.0;
 
       this.isSpeaking = true;
 
@@ -147,16 +147,95 @@ class BirthdayAudioEngine {
   }
 
   // ==========================================
+  // 💥 DJ AIR HORN & ENERGETIC PARTY SFX
+  // ==========================================
+  public playAirHorn() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+
+    // Classic 3-burst DJ Air Horn: Honk! Honk! Hooooonk!
+    const bursts = [0, 0.15, 0.35];
+    const durations = [0.12, 0.12, 0.4];
+
+    bursts.forEach((startTime, idx) => {
+      setTimeout(() => {
+        try {
+          if (!this.ctx) return;
+          const now = this.ctx.currentTime;
+          const duration = durations[idx];
+
+          // Dual oscillators for that signature brassy air-horn timbre
+          const f1 = 466.16; // Bb4
+          const f2 = 587.33; // D5
+
+          [f1, f2].forEach((freq) => {
+            if (!this.ctx) return;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(freq, now);
+            osc.frequency.exponentialRampToValueAtTime(freq * 1.03, now + duration);
+
+            gain.gain.setValueAtTime(0.28, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + duration);
+          });
+        } catch {
+          // Ignored
+        }
+      }, startTime * 1000);
+    });
+  }
+
+  public playBassDrop() {
+    if (this.isMuted) return;
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(35, now + 0.9);
+
+      gain.gain.setValueAtTime(0.45, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.1);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now);
+      osc.stop(now + 1.1);
+    } catch {
+      // Ignored
+    }
+  }
+
+  public playCrowdCheer() {
+    if (this.isMuted) return;
+    this.playAirHorn();
+    setTimeout(() => {
+      this.playHarpArpeggio([523.25, 659.25, 783.99, 1046.5, 1318.5]);
+    }, 250);
+  }
+
+  // ==========================================
   // STEP SOUND ENGINE (Specialized sound for every step)
   // ==========================================
   public playStepSound(realmId: 1 | 2 | 3 | 4, stepIdx: number) {
     if (this.isMuted) return;
 
     switch (realmId) {
-      case 1: // Starlight: Heavenly sparkling arpeggio
+      case 1: // Starlight: Heavenly sparkling arpeggio + chime
         this.playHarpArpeggio([523.25, 659.25, 783.99, 1046.5]);
         break;
-      case 2: // Cyber Citadel: Electric futuristic chord
+      case 2: // Cyber Citadel: Electric futuristic chord + bass punch
         this.playCyberChord(440 + (stepIdx % 4) * 60);
         break;
       case 3: // Enchanted Garden: Sweet music box chime
@@ -182,16 +261,16 @@ class BirthdayAudioEngine {
 
       osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, now);
-      osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.3);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.25);
 
-      gain.gain.setValueAtTime(0.18, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+      gain.gain.setValueAtTime(0.22, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
 
       osc.start(now);
-      osc.stop(now + 0.5);
+      osc.stop(now + 0.4);
     } catch {
       // Ignored
     }
@@ -199,7 +278,7 @@ class BirthdayAudioEngine {
 
   public playHarpArpeggio(notes: number[]) {
     notes.forEach((freq, i) => {
-      setTimeout(() => this.playChime(freq), i * 70);
+      setTimeout(() => this.playChime(freq), i * 60);
     });
   }
 
@@ -214,12 +293,12 @@ class BirthdayAudioEngine {
         const gain = this.ctx.createGain();
         osc.type = 'sawtooth';
         osc.frequency.setValueAtTime(f, now);
-        gain.gain.setValueAtTime(0.08, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.4);
+        osc.stop(now + 0.35);
       });
     } catch {
       // Ignored
@@ -237,16 +316,16 @@ class BirthdayAudioEngine {
           const gain = this.ctx.createGain();
           osc.type = 'triangle';
           osc.frequency.setValueAtTime(n, now);
-          gain.gain.setValueAtTime(0.12, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+          gain.gain.setValueAtTime(0.16, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
           osc.connect(gain);
           gain.connect(this.ctx.destination);
           osc.start(now);
-          osc.stop(now + 0.6);
+          osc.stop(now + 0.5);
         } catch {
           // Ignored
         }
-      }, i * 110);
+      }, i * 90);
     });
   }
 
@@ -262,16 +341,16 @@ class BirthdayAudioEngine {
           const gain = this.ctx.createGain();
           osc.type = 'sine';
           osc.frequency.setValueAtTime(n, now);
-          gain.gain.setValueAtTime(0.18, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+          gain.gain.setValueAtTime(0.22, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
           osc.connect(gain);
           gain.connect(this.ctx.destination);
           osc.start(now);
-          osc.stop(now + 0.5);
+          osc.stop(now + 0.45);
         } catch {
           // Ignored
         }
-      }, i * 90);
+      }, i * 75);
     });
   }
 
@@ -285,9 +364,9 @@ class BirthdayAudioEngine {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(280, now);
+      osc.frequency.setValueAtTime(320, now);
       osc.frequency.exponentialRampToValueAtTime(80, now + 0.08);
-      gain.gain.setValueAtTime(0.3, now);
+      gain.gain.setValueAtTime(0.35, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
       osc.connect(gain);
       gain.connect(this.ctx.destination);
@@ -296,7 +375,7 @@ class BirthdayAudioEngine {
 
       const notes = [523.25, 659.25, 783.99, 1046.5];
       notes.forEach((note, i) => {
-        setTimeout(() => this.playChime(note), i * 60);
+        setTimeout(() => this.playChime(note), i * 50);
       });
     } catch {
       // Ignored
@@ -313,10 +392,10 @@ class BirthdayAudioEngine {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.setValueAtTime(200, now);
       osc.frequency.exponentialRampToValueAtTime(60, now + 0.35);
 
-      gain.gain.setValueAtTime(0.25, now);
+      gain.gain.setValueAtTime(0.3, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
 
       osc.connect(gain);
@@ -324,7 +403,7 @@ class BirthdayAudioEngine {
       osc.start(now);
       osc.stop(now + 0.35);
 
-      setTimeout(() => this.playChime(880), 200);
+      setTimeout(() => this.playChime(880), 180);
     } catch {
       // Ignored
     }
@@ -340,10 +419,10 @@ class BirthdayAudioEngine {
       const gain = this.ctx.createGain();
 
       osc.type = 'square';
-      osc.frequency.setValueAtTime(400, now);
+      osc.frequency.setValueAtTime(450, now);
       osc.frequency.exponentialRampToValueAtTime(40, now + 0.09);
 
-      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.setValueAtTime(0.4, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
 
       osc.connect(gain);
@@ -351,7 +430,7 @@ class BirthdayAudioEngine {
       osc.start(now);
       osc.stop(now + 0.09);
 
-      setTimeout(() => this.playChime(1046.5), 60);
+      setTimeout(() => this.playChime(1046.5), 50);
     } catch {
       // Ignored
     }
@@ -367,96 +446,127 @@ class BirthdayAudioEngine {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(120, now);
-      osc.frequency.exponentialRampToValueAtTime(800, now + 0.4);
-      osc.frequency.exponentialRampToValueAtTime(90, now + 0.9);
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(900, now + 0.35);
+      osc.frequency.exponentialRampToValueAtTime(90, now + 0.85);
 
       const filter = this.ctx.createBiquadFilter();
       filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(300, now);
-      filter.frequency.exponentialRampToValueAtTime(2500, now + 0.4);
-      filter.frequency.exponentialRampToValueAtTime(250, now + 0.9);
+      filter.frequency.setValueAtTime(350, now);
+      filter.frequency.exponentialRampToValueAtTime(3000, now + 0.35);
+      filter.frequency.exponentialRampToValueAtTime(300, now + 0.85);
 
-      gain.gain.setValueAtTime(0.28, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+      gain.gain.setValueAtTime(0.32, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
 
       osc.connect(filter);
       filter.connect(gain);
       gain.connect(this.ctx.destination);
 
       osc.start(now);
-      osc.stop(now + 0.95);
+      osc.stop(now + 0.9);
     } catch {
       // Ignored
     }
   }
 
   // ==========================================
-  // BACKGROUND BGM LOOP ENGINE (Multi-track)
+  // BACKGROUND BGM LOOP ENGINE (Multi-track with Fast Energetic Remix)
   // ==========================================
   public startBackgroundMelody() {
     if (this.isMuted || this.isPlayingBgm) return;
     this.isPlayingBgm = true;
 
-    // Track 1: Happy Birthday Dear Ruhi (Full Melody with Chords)
+    // Track 0: FULL ENERGETIC PARTY DANCE REMIX (Upbeat 128 BPM Party Anthem)
+    const partyRemixNotes = [
+      // Beat 1: Energetic punch + bouncy Happy Birthday riff
+      { f: 261.63, d: 200, chord: 65.41, kick: true },
+      { f: 261.63, d: 200 },
+      { f: 293.66, d: 400, chord: 73.42, kick: true },
+      { f: 261.63, d: 400 },
+      { f: 349.23, d: 400, chord: 87.31, kick: true },
+      { f: 329.63, d: 800, kick: true },
+
+      { f: 261.63, d: 200, chord: 65.41, kick: true },
+      { f: 261.63, d: 200 },
+      { f: 293.66, d: 400, chord: 73.42, kick: true },
+      { f: 261.63, d: 400 },
+      { f: 392.00, d: 400, chord: 98.00, kick: true },
+      { f: 349.23, d: 800, kick: true },
+
+      // Drop: "Happy Birthday Dear Ruhi!" (Fast synth lead!)
+      { f: 261.63, d: 200, chord: 130.81, kick: true },
+      { f: 261.63, d: 200 },
+      { f: 523.25, d: 400, chord: 130.81, kick: true },
+      { f: 440.00, d: 400, chord: 110.00, kick: true },
+      { f: 349.23, d: 400, chord: 87.31, kick: true },
+      { f: 329.63, d: 400 },
+      { f: 293.66, d: 650, chord: 73.42, kick: true },
+
+      // Finale Chorus
+      { f: 466.16, d: 200, chord: 116.54, kick: true },
+      { f: 466.16, d: 200 },
+      { f: 440.00, d: 400, chord: 110.00, kick: true },
+      { f: 349.23, d: 400, chord: 87.31, kick: true },
+      { f: 392.00, d: 400, chord: 98.00, kick: true },
+      { f: 349.23, d: 900, chord: 65.41, kick: true },
+    ];
+
+    // Track 1: Classic Melodic Birthday Song
     const bdayNotes = [
-      { f: 261.63, d: 350, chord: 130.81 }, // C4
-      { f: 261.63, d: 350 },
-      { f: 293.66, d: 700, chord: 146.83 }, // D4
-      { f: 261.63, d: 700 },
-      { f: 349.23, d: 700, chord: 174.61 }, // F4
-      { f: 329.63, d: 1400 }, // E4
-
-      { f: 261.63, d: 350, chord: 130.81 },
-      { f: 261.63, d: 350 },
-      { f: 293.66, d: 700, chord: 146.83 },
-      { f: 261.63, d: 700 },
-      { f: 392.0,  d: 700, chord: 196.00 }, // G4
-      { f: 349.23, d: 1400 },
-
-      // "Happy Birthday Dear Ruhi..."
-      { f: 261.63, d: 350, chord: 130.81 },
-      { f: 261.63, d: 350 },
-      { f: 523.25, d: 700, chord: 261.63 }, // C5
-      { f: 440.0,  d: 700, chord: 220.00 }, // A4
-      { f: 349.23, d: 700, chord: 174.61 }, // F4
-      { f: 329.63, d: 700 },
-      { f: 293.66, d: 1200, chord: 146.83 }, // D4
-
-      // "Happy Birthday to you!"
-      { f: 466.16, d: 350, chord: 233.08 }, // Bb4
-      { f: 466.16, d: 350 },
-      { f: 440.0,  d: 700, chord: 220.00 },
-      { f: 349.23, d: 700, chord: 174.61 },
-      { f: 392.0,  d: 700, chord: 196.00 },
-      { f: 349.23, d: 1600, chord: 130.81 }, // F4 final
-    ];
-
-    // Track 2: Starlight Dream Lullaby
-    const starlightNotes = [
-      { f: 329.63, d: 600, chord: 164.81 },
-      { f: 392.0,  d: 600 },
-      { f: 493.88, d: 900, chord: 246.94 },
-      { f: 440.0,  d: 600 },
-      { f: 392.0,  d: 900, chord: 196.00 },
-      { f: 329.63, d: 1200 },
+      { f: 261.63, d: 300, chord: 130.81 },
+      { f: 261.63, d: 300 },
       { f: 293.66, d: 600, chord: 146.83 },
+      { f: 261.63, d: 600 },
+      { f: 349.23, d: 600, chord: 174.61 },
+      { f: 329.63, d: 1100 },
+
+      { f: 261.63, d: 300, chord: 130.81 },
+      { f: 261.63, d: 300 },
+      { f: 293.66, d: 600, chord: 146.83 },
+      { f: 261.63, d: 600 },
+      { f: 392.00, d: 600, chord: 196.00 },
+      { f: 349.23, d: 1100 },
+
+      { f: 261.63, d: 300, chord: 130.81 },
+      { f: 261.63, d: 300 },
+      { f: 523.25, d: 600, chord: 261.63 },
+      { f: 440.00, d: 600, chord: 220.00 },
+      { f: 349.23, d: 600, chord: 174.61 },
       { f: 329.63, d: 600 },
-      { f: 392.0,  d: 1400, chord: 196.00 },
+      { f: 293.66, d: 1000, chord: 146.83 },
+
+      { f: 466.16, d: 300, chord: 233.08 },
+      { f: 466.16, d: 300 },
+      { f: 440.00, d: 600, chord: 220.00 },
+      { f: 349.23, d: 600, chord: 174.61 },
+      { f: 392.00, d: 600, chord: 196.00 },
+      { f: 349.23, d: 1300, chord: 130.81 },
     ];
 
-    // Track 3: Royal Golden Symphony
+    // Track 2: Starlight Dream
+    const starlightNotes = [
+      { f: 329.63, d: 500, chord: 164.81 },
+      { f: 392.00, d: 500 },
+      { f: 493.88, d: 800, chord: 246.94 },
+      { f: 440.00, d: 500 },
+      { f: 392.00, d: 800, chord: 196.00 },
+      { f: 329.63, d: 1000 },
+    ];
+
+    // Track 3: Royal Symphony
     const royalNotes = [
-      { f: 523.25, d: 500, chord: 261.63 },
-      { f: 659.25, d: 500, chord: 329.63 },
-      { f: 783.99, d: 1000, chord: 392.00 },
-      { f: 659.25, d: 500 },
-      { f: 783.99, d: 500 },
-      { f: 1046.5, d: 1400, chord: 523.25 },
+      { f: 523.25, d: 450, chord: 261.63 },
+      { f: 659.25, d: 450, chord: 329.63 },
+      { f: 783.99, d: 850, chord: 392.00 },
+      { f: 659.25, d: 450 },
+      { f: 1046.5, d: 1200, chord: 523.25 },
     ];
 
     const currentNotesList =
-      this.currentTrack === 'bday_song'
+      this.currentTrack === 'party_remix'
+        ? partyRemixNotes
+        : this.currentTrack === 'bday_song'
         ? bdayNotes
         : this.currentTrack === 'starlight'
         ? starlightNotes
@@ -466,9 +576,11 @@ class BirthdayAudioEngine {
     const playNext = () => {
       if (!this.isPlayingBgm || this.isMuted) return;
       const n = currentNotesList[noteIndex];
-      this.playPianoNote(n.f, n.d / 1000, n.chord);
+
+      this.playSynthNote(n.f, n.d / 1000, n.chord, (n as { kick?: boolean }).kick);
+
       noteIndex = (noteIndex + 1) % currentNotesList.length;
-      const delay = n.d + (noteIndex === 0 ? 2500 : 80);
+      const delay = n.d + (noteIndex === 0 ? 1200 : 35);
       this.bgLoopInterval = window.setTimeout(playNext, delay);
     };
 
@@ -483,19 +595,33 @@ class BirthdayAudioEngine {
     }
   }
 
-  private playPianoNote(freq: number, duration: number, chordBass?: number) {
+  private playSynthNote(freq: number, duration: number, chordBass?: number, kick?: boolean) {
     try {
       this.init();
       if (!this.ctx) return;
       const now = this.ctx.currentTime;
 
-      // Melody Tone (warm triangle with sine harmonic)
+      // Punchy Kick Drum for Energetic Party Rhythm
+      if (kick) {
+        const kickOsc = this.ctx.createOscillator();
+        const kickGain = this.ctx.createGain();
+        kickOsc.frequency.setValueAtTime(140, now);
+        kickOsc.frequency.exponentialRampToValueAtTime(40, now + 0.08);
+        kickGain.gain.setValueAtTime(0.25, now);
+        kickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+        kickOsc.connect(kickGain);
+        kickGain.connect(this.ctx.destination);
+        kickOsc.start(now);
+        kickOsc.stop(now + 0.09);
+      }
+
+      // Synth Melody Lead (Vibrant sawtooth/triangle blend)
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
-      osc.type = 'triangle';
+      osc.type = this.currentTrack === 'party_remix' ? 'sawtooth' : 'triangle';
       osc.frequency.setValueAtTime(freq, now);
 
-      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.setValueAtTime(this.currentTrack === 'party_remix' ? 0.07 : 0.08, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
       osc.connect(gain);
@@ -503,18 +629,18 @@ class BirthdayAudioEngine {
       osc.start(now);
       osc.stop(now + duration);
 
-      // Bass Chord Pad (if present)
+      // Deep Sub Bass
       if (chordBass) {
         const bassOsc = this.ctx.createOscillator();
         const bassGain = this.ctx.createGain();
         bassOsc.type = 'sine';
         bassOsc.frequency.setValueAtTime(chordBass, now);
-        bassGain.gain.setValueAtTime(0.05, now);
-        bassGain.gain.exponentialRampToValueAtTime(0.001, now + duration * 1.2);
+        bassGain.gain.setValueAtTime(0.08, now);
+        bassGain.gain.exponentialRampToValueAtTime(0.001, now + duration * 1.1);
         bassOsc.connect(bassGain);
         bassGain.connect(this.ctx.destination);
         bassOsc.start(now);
-        bassOsc.stop(now + duration * 1.2);
+        bassOsc.stop(now + duration * 1.1);
       }
     } catch {
       // Ignored
