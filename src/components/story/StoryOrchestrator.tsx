@@ -67,15 +67,15 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
       setIsReadingVoice(true);
       const energeticIntro =
         currentIdx === 0
-          ? 'Happy Birthday Ruhi! Are you ready for the grand wonder-verse?'
+          ? 'हैप्पी बर्थडे रूही! तेरा भाई मोहित बोल रहा है! क्या तुम इस जादुई सफर के लिए तैयार हो?'
           : currentIdx === 5
-          ? 'Make way for the Boss Lady! Absolute royalty!'
+          ? 'रास्ता छोड़ो बॉस लेडी आ चुकी हैं! तेरे भाई मोहित की शान, हमारी रूही!'
           : currentIdx === 10
-          ? 'Welcome to the Enchanted Garden! Time to cut the cake!'
+          ? 'जादुई उपवन में तुम्हारा स्वागत है रूही! चल अब केक काटने का समय आ गया है!'
           : currentIdx === 17
-          ? 'The legendary brother-sister duo! Mohit and Ruhi forever!'
+          ? 'मोहित और रुक्मणी! तेरा भाई मोहित हमेशा तेरी ढाल बनके खड़ा रहेगा!'
           : currentIdx === 20
-          ? 'Happy Birthday Ruhi! Supernova Fireworks Celebration!'
+          ? 'हैप्पी बर्थडे रूही! सुपरनोवा आतिशबाज़ी! तेरा भाई मोहित तुझपे जान लुटाता है!'
           : '';
 
       const textToRead = `${energeticIntro ? energeticIntro + ' ' : ''}${currentChapter.title}. ${currentChapter.emotionalDialogue}`;
@@ -484,8 +484,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
               सदा खुश रहो मेरी जान!
             </h3>
             <p className="text-xs sm:text-sm text-purple-200/90 max-w-sm mb-6 font-medium">
-              "तुम्हारा भाई मोहित जैन हमेशा तुम्हारे साथ, तुम्हारे पीछे, तुम्हारी
-              हर खुशी के लिए खड़ा है।"
+              "तेरा भाई मोहित हमेशा तेरे साथ, तेरी हर खुशी और मुस्कान के लिए जान लुटाने को तैयार है!"
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -500,7 +499,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
               <button
                 onClick={() => {
                   bdayAudio.playAirHorn();
-                  bdayAudio.speak('Happy Birthday Rukmani, Mohit bhaiya loves you so much!');
+                  bdayAudio.speak('Happy Birthday Rukmani! Tera bhai Mohit tujhse sabse jyada pyar karta hai!');
                   alert('🎉 यह जादुई लिंक रूही के साथ शेयर करें: https://ruhi-birthday-magic.vercel.app');
                 }}
                 className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-600 to-amber-500 text-white font-semibold text-xs sm:text-sm cursor-pointer shadow-md hover:scale-105 transition-transform"

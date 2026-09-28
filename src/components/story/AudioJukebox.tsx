@@ -39,6 +39,8 @@ const TRACKS: AudioTrack[] = [
   },
 ];
 
+import { bdayAudio } from '../../audio/birthdayAudio';
+
 export const AudioJukebox: React.FC = () => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -46,6 +48,16 @@ export const AudioJukebox: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const currentTrack = TRACKS[currentTrackIndex];
+
+  // Auto-duck jukebox volume when voice speaks!
+  useEffect(() => {
+    const unsubscribe = bdayAudio.onDuckChange((isDucked) => {
+      if (audioRef.current) {
+        audioRef.current.volume = isDucked ? 0.18 : 1.0;
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     if (audioRef.current) {

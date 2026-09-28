@@ -51,7 +51,7 @@ export const BalloonPop: React.FC<BalloonPopProps> = ({ balloons }) => {
       </div>
 
       <p className="text-xs text-purple-200/90 mb-4 text-center">
-        "हर गुब्बारे के पीछे मोहित भैया का एक अनमोल वादा और गिफ्ट है—क्योंकि मोहित का सब कुछ रूही का है!"
+        "हर गुब्बारे के पीछे तेरे भाई मोहित का एक अनमोल वादा और गिफ्ट है—क्योंकि तेरे भाई का सब कुछ रूही का है!"
       </p>
 
       {/* Balloon Grid */}

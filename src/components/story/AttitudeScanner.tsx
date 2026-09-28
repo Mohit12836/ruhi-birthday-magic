@@ -26,7 +26,7 @@ export const AttitudeScanner: React.FC = () => {
     { label: 'शाही स्टाइल & ग्लैमर (Style)', value: '100%' },
     { label: 'बॉस लेडी कॉन्फिडेंस (Boss Level)', value: '100%' },
     { label: 'मासूमियत + नटखटपन (Cuteness)', value: '500%' },
-    { label: 'मोहित भैया पर हक & प्यार (Bond)', value: '1000% (Infinity)' },
+    { label: 'तेरे भाई मोहित पर पूरा हक & प्यार (Bond)', value: '1000% (Infinity)' },
   ];
 
   return (

@@ -75,7 +75,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
 
     // Mohit's emotional & happy voice
     bdayAudio.speak(
-      'अरे वाह रूही! बहुत स्वादिष्ट केक है! जन्मदिन की ढेर सारी शुभकामनाएं मेरी प्यारी बहना! भगवान तुम्हें दुनिया की सारी खुशियां दे!'
+      'वाह रूही! बहुत स्वादिष्ट केक है! तेरे भाई मोहित की तरफ से तुझे जन्मदिन की बहुत-बहुत शुभकामनाएं मेरी प्यारी बहना! तेरा भाई तुझसे बहुत प्यार करता है!'
     );
 
     if (onComplete) {
@@ -105,7 +105,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
             : !cakeCut
             ? '2. हाथ से केक काटें'
             : !fedMohit
-            ? '3. मोहित भैया को खिलाएं ❤️'
+            ? '3. तेरे भाई मोहित को खिलाएं ❤️'
             : 'सेलिब्रेशन पूर्ण 🎉'}
         </span>
       </div>
@@ -275,7 +275,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
           >
             <div className="flex items-center gap-2 text-pink-300 font-extrabold text-sm">
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400 animate-pulse" />
-              <span>सबसे पहला बाइट मोहित भैया के नाम!</span>
+              <span>सबसे पहला बाइट तेरे भाई मोहित के नाम!</span>
               <Heart className="w-4 h-4 text-rose-400 fill-rose-400 animate-pulse" />
             </div>
 
@@ -283,19 +283,19 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
             <div className="relative w-28 h-32 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.6)] group">
               <img
                 src={mohitImg}
-                alt="Mohit Bhaiya"
+                alt="तेरा भाई मोहित"
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-x-0 bottom-0 bg-black/70 p-1 text-center">
                 <span className="text-[10px] font-bold text-amber-300">
-                  मोहित भैया
+                  तेरा भाई मोहित
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-purple-200/90 max-w-xs leading-relaxed">
               "रूही, केक कट चुका है! नीचे दिए गए बटन पर टैप करके सबसे पहला बाइट
-              अपने मोहित भैया को खिलाओ!"
+              अपने भाई मोहित को खिलाओ!"
             </p>
 
             <motion.button
@@ -304,7 +304,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
               onClick={handleFeedMohit}
               className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 text-white font-extrabold text-sm shadow-[0_0_25px_rgba(244,63,94,0.7)] cursor-pointer animate-pulse"
             >
-              <span>🍰 मोहित भैया को खिलाएं (Feed First Bite) ❤️</span>
+              <span>🍰 तेरे भाई मोहित को खिलाएं (Feed First Bite) ❤️</span>
             </motion.button>
           </motion.div>
         )}
@@ -318,14 +318,14 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
           >
             <div className="flex items-center gap-2 text-amber-300 font-extrabold text-base">
               <Sparkles className="w-5 h-5 text-amber-300 animate-spin" />
-              <span>मोहित भैया ने पहला बाइट खा लिया! 😋🍰</span>
+              <span>तेरे भाई मोहित ने पहला बाइट खा लिया! 😋🍰</span>
               <Sparkles className="w-5 h-5 text-amber-300 animate-spin" />
             </div>
 
             <p className="text-xs sm:text-sm text-pink-100 font-medium leading-relaxed italic">
-              "वाह रूही! बहुत मीठा और स्वादिष्ट केक है! जन्मदिन की ढेर सारी
-              शुभकामनाएं मेरी प्यारी बहना! भगवान तुम्हें दुनिया की सारी खुशियां
-              दे!"
+              "वाह रूही! बहुत मीठा और स्वादिष्ट केक है! तेरे भाई मोहित की तरफ से तुझे
+              जन्मदिन की बहुत-बहुत शुभकामनाएं मेरी प्यारी बहना! तेरा भाई तुझसे बहुत
+              प्यार करता है!"
             </p>
 
             <div className="flex items-center gap-1.5 mt-1 text-[11px] text-pink-300/80">

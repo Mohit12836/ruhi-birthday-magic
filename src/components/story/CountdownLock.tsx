@@ -106,7 +106,7 @@ export const CountdownLock: React.FC<CountdownLockProps> = ({ onUnlock }) => {
 
       <div className="flex items-center gap-2 mt-5 text-xs text-purple-300/60">
         <Heart className="w-3.5 h-3.5 text-pink-400 fill-pink-400 animate-pulse" />
-        <span>मोहित भैया की तरफ से प्यार से सजाया गया</span>
+        <span>तेरे भाई मोहित की तरफ से प्यार से सजाया गया ❤️</span>
       </div>
     </div>
   );
