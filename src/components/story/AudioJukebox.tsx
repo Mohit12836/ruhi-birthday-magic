@@ -101,37 +101,37 @@ export const AudioJukebox: React.FC = () => {
       />
 
       {/* Main Jukebox Card Header */}
-      <div className="p-3 sm:p-4 rounded-3xl bg-gradient-to-r from-pink-950/80 via-purple-950/90 to-slate-950/90 border border-pink-400/40 backdrop-blur-xl shadow-[0_8px_30px_rgba(236,72,153,0.35)] flex items-center justify-between gap-3">
+      <div className="p-3 sm:p-4 rounded-3xl bg-white/95 border border-pink-300/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(236,72,153,0.18)] flex items-center justify-between gap-3">
         {/* Track Info with Spinning Vinyl */}
         <div className="flex items-center gap-3 min-w-0">
           <motion.div
             animate={isPlaying ? { rotate: 360 } : {}}
             transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
-            className="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-600 to-amber-400 flex items-center justify-center p-1 shrink-0 shadow-[0_0_15px_rgba(244,63,94,0.6)] cursor-pointer"
+            className="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-600 to-amber-400 flex items-center justify-center p-1 shrink-0 shadow-[0_0_15px_rgba(244,63,94,0.4)] cursor-pointer"
             onClick={handleTogglePlay}
           >
-            <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center border border-white/30 text-lg">
+            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center border border-white/40 text-lg">
               {currentTrack.icon}
             </div>
           </motion.div>
 
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 border border-pink-300">
                 {currentTrack.tag}
               </span>
               {isPlaying && (
                 <span className="flex items-center gap-0.5">
-                  <span className="w-1 h-3 bg-pink-400 animate-pulse rounded-full" />
-                  <span className="w-1 h-4 bg-amber-400 animate-bounce rounded-full" />
-                  <span className="w-1 h-2 bg-purple-400 animate-pulse rounded-full" />
+                  <span className="w-1 h-3 bg-pink-500 animate-pulse rounded-full" />
+                  <span className="w-1 h-4 bg-amber-500 animate-bounce rounded-full" />
+                  <span className="w-1 h-2 bg-purple-500 animate-pulse rounded-full" />
                 </span>
               )}
             </div>
-            <h4 className="text-xs sm:text-sm font-bold text-white truncate">
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900 truncate">
               {currentTrack.title}
             </h4>
-            <p className="text-[10px] text-pink-200/70 truncate">
+            <p className="text-[10px] text-pink-700/80 truncate font-medium">
               {currentTrack.artist}
             </p>
           </div>
@@ -142,7 +142,7 @@ export const AudioJukebox: React.FC = () => {
           {/* Play/Pause Button */}
           <button
             onClick={handleTogglePlay}
-            className="p-2.5 rounded-full bg-gradient-to-r from-pink-600 to-amber-500 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="p-2.5 rounded-full bg-gradient-to-r from-pink-600 to-amber-500 text-white shadow-[0_0_15px_rgba(236,72,153,0.4)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
           >
             {isPlaying ? (
               <Pause className="w-4 h-4 fill-white" />
@@ -154,7 +154,7 @@ export const AudioJukebox: React.FC = () => {
           {/* Toggle Tracklist Drawer */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="px-3 py-2 rounded-2xl bg-purple-900/50 hover:bg-purple-900/80 border border-purple-400/40 text-xs font-semibold text-purple-200 hover:text-white cursor-pointer transition-all"
+            className="px-3 py-2 rounded-2xl bg-purple-100 hover:bg-purple-200 border border-purple-300 text-xs font-bold text-purple-900 cursor-pointer transition-all shadow-sm"
           >
             {isOpen ? 'बंद करें' : 'गाने बदलें 🎵'}
           </button>
@@ -168,11 +168,11 @@ export const AudioJukebox: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="mt-2 p-3 rounded-2xl bg-slate-950/90 border border-pink-400/30 backdrop-blur-xl shadow-xl space-y-2 overflow-hidden"
+            className="mt-2 p-3 rounded-2xl bg-white/95 border border-pink-300/80 backdrop-blur-xl shadow-xl space-y-2 overflow-hidden"
           >
-            <div className="text-[11px] font-bold text-pink-300 px-1 flex items-center justify-between">
+            <div className="text-[11px] font-bold text-pink-700 px-1 flex items-center justify-between">
               <span>🎧 डायरेक्ट चलाएं (Direct Song Clips):</span>
-              <span className="text-[10px] text-purple-300/70">
+              <span className="text-[10px] text-purple-700/80 font-medium">
                 टैप करके तुरंत सुनें
               </span>
             </div>
@@ -185,31 +185,31 @@ export const AudioJukebox: React.FC = () => {
                   onClick={() => handlePlayTrack(idx)}
                   className={`p-2.5 rounded-xl border transition-all flex items-center justify-between cursor-pointer ${
                     isCurrent && isPlaying
-                      ? 'bg-pink-600/30 border-pink-400 shadow-[0_0_12px_rgba(236,72,153,0.4)]'
-                      : 'bg-slate-900/60 border-purple-500/20 hover:bg-purple-900/40'
+                      ? 'bg-pink-50 border-pink-400 shadow-[0_2px_12px_rgba(236,72,153,0.25)]'
+                      : 'bg-slate-50/80 border-purple-100 hover:bg-purple-50'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
                     <span className="text-xl">{t.icon}</span>
                     <div className="min-w-0">
-                      <p className="text-xs font-bold text-white truncate">
+                      <p className="text-xs font-bold text-slate-900 truncate">
                         {t.title}
                       </p>
-                      <p className="text-[10px] text-slate-300/70 truncate">
+                      <p className="text-[10px] text-slate-600 truncate">
                         {t.artist}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0">
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-purple-200">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 font-bold">
                       {t.tag}
                     </span>
-                    <div className="p-1.5 rounded-full bg-pink-500/20 text-pink-300">
+                    <div className="p-1.5 rounded-full bg-pink-100 text-pink-600">
                       {isCurrent && isPlaying ? (
-                        <Pause className="w-3.5 h-3.5 fill-pink-300" />
+                        <Pause className="w-3.5 h-3.5 fill-pink-600" />
                       ) : (
-                        <Play className="w-3.5 h-3.5 fill-pink-300" />
+                        <Play className="w-3.5 h-3.5 fill-pink-600" />
                       )}
                     </div>
                   </div>

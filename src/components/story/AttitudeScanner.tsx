@@ -32,13 +32,13 @@ export const AttitudeScanner: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center max-w-md mx-auto py-4 w-full">
       {/* Scanner Radar / Display */}
-      <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-2 border-cyan-400/40 bg-slate-950/80 flex flex-col items-center justify-center p-4 shadow-[0_0_40px_rgba(6,182,212,0.3)] overflow-hidden my-3">
+      <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full border-2 border-cyan-400 bg-white/95 flex flex-col items-center justify-center p-4 shadow-[0_8px_30px_rgba(6,182,212,0.2)] overflow-hidden my-3">
         {/* Animated Scanner Radar Line */}
         {scanning && (
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-            className="absolute inset-0 origin-center bg-gradient-to-tr from-transparent via-cyan-400/20 to-transparent pointer-events-none"
+            className="absolute inset-0 origin-center bg-gradient-to-tr from-transparent via-cyan-400/40 to-transparent pointer-events-none"
           />
         )}
 
@@ -47,13 +47,13 @@ export const AttitudeScanner: React.FC = () => {
           <div className="flex flex-col items-center text-center z-10">
             <Activity
               className={`w-10 h-10 ${
-                scanning ? 'text-cyan-400 animate-spin' : 'text-cyan-300/70'
+                scanning ? 'text-cyan-600 animate-spin' : 'text-cyan-600'
               } mb-2`}
             />
-            <span className="text-xs font-mono text-cyan-200 uppercase tracking-widest">
+            <span className="text-xs font-mono font-bold text-cyan-900 uppercase tracking-widest">
               {scanning ? 'SCANNING ENERGY...' : 'AURA SCANNER READY'}
             </span>
-            <span className="text-[10px] text-cyan-300/60 mt-1">
+            <span className="text-[10px] text-slate-600 font-medium mt-1">
               {scanning ? 'विश्लेषण जारी है...' : 'स्कैन शुरू करने के लिए बटन दबाएं'}
             </span>
           </div>
@@ -63,14 +63,14 @@ export const AttitudeScanner: React.FC = () => {
             animate={{ scale: 1, opacity: 1 }}
             className="flex flex-col items-center text-center z-10"
           >
-            <Zap className="w-10 h-10 text-amber-300 animate-bounce mb-1" />
-            <span className="text-xl sm:text-2xl font-black text-amber-300 tracking-wider">
+            <Zap className="w-10 h-10 text-amber-500 animate-bounce mb-1" />
+            <span className="text-xl sm:text-2xl font-black text-amber-600 tracking-wider">
               1000%
             </span>
-            <span className="text-[10px] font-bold text-rose-300 uppercase tracking-wider">
+            <span className="text-[10px] font-extrabold text-rose-600 uppercase tracking-wider">
               💥 OVERFLOW LEVEL!
             </span>
-            <span className="text-[10px] text-slate-300 mt-1">
+            <span className="text-[10px] text-slate-700 font-bold mt-1">
               Unstoppable Sister
             </span>
           </motion.div>
@@ -82,7 +82,7 @@ export const AttitudeScanner: React.FC = () => {
         <button
           onClick={startScan}
           disabled={scanning}
-          className="mt-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white font-bold text-sm shadow-[0_0_20px_rgba(6,182,212,0.5)] cursor-pointer disabled:opacity-50"
+          className="mt-3 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white font-bold text-sm shadow-[0_4px_20px_rgba(6,182,212,0.4)] cursor-pointer disabled:opacity-50 hover:scale-105 active:scale-95 transition-all"
         >
           {scanning ? 'ऑरा स्कैन हो रहा है...' : '⚡ रूही का पावर लेवल स्कैन करें'}
         </button>
@@ -94,13 +94,13 @@ export const AttitudeScanner: React.FC = () => {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.15 }}
-              className="flex items-center justify-between p-2.5 rounded-xl bg-slate-900/70 border border-cyan-500/30 text-xs sm:text-sm"
+              className="flex items-center justify-between p-2.5 rounded-xl bg-white/95 border border-cyan-300 text-xs sm:text-sm shadow-sm"
             >
-              <span className="text-slate-200 flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="text-slate-800 font-semibold flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600" />
                 {m.label}
               </span>
-              <span className="font-mono font-bold text-cyan-300">{m.value}</span>
+              <span className="font-mono font-bold text-cyan-700">{m.value}</span>
             </motion.div>
           ))}
         </div>

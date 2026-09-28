@@ -86,18 +86,18 @@ export const WaxSealStamp: React.FC<WaxSealStampProps> = ({ onStamped }) => {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-3.5 rounded-2xl bg-amber-500/15 border border-amber-400/40 backdrop-blur-md"
+            className="p-3.5 rounded-2xl bg-white/95 border border-amber-300 backdrop-blur-md shadow-md"
           >
-            <div className="flex items-center justify-center gap-2 text-amber-300 font-bold text-sm">
-              <Sparkles className="w-4 h-4 animate-spin text-amber-200" />
+            <div className="flex items-center justify-center gap-2 text-amber-800 font-bold text-sm">
+              <Sparkles className="w-4 h-4 animate-spin text-amber-500" />
               <span>शाही मुहर दर्ज हो चुकी है! 📜✨</span>
             </div>
-            <p className="text-xs text-amber-200/80 mt-1">
+            <p className="text-xs text-slate-800 font-semibold mt-1">
               "मोहित और रूही का यह रिश्ता अनंत काल तक अमर रहेगा।"
             </p>
           </motion.div>
         ) : (
-          <p className="text-xs sm:text-sm text-purple-200/80">
+          <p className="text-xs sm:text-sm text-slate-700 font-semibold">
             👆 मुहर पर क्लिक करके इस वादे को अमर करें
           </p>
         )}

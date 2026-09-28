@@ -37,11 +37,11 @@ export const InfinityDuo: React.FC = () => {
               rotate: [0, 5, -5, 0],
             }}
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            className="p-3 rounded-full bg-gradient-to-r from-amber-500/20 via-pink-500/20 to-purple-500/20 border border-amber-300/50 backdrop-blur-md shadow-[0_0_20px_rgba(236,72,153,0.5)]"
+            className="p-3.5 rounded-full bg-white/90 border border-amber-300 backdrop-blur-md shadow-[0_4px_20px_rgba(236,72,153,0.25)]"
           >
-            <InfinityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-amber-300 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]" />
+            <InfinityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500 drop-shadow-sm" />
           </motion.div>
-          <span className="text-[10px] font-mono tracking-widest text-pink-300 font-bold mt-1">
+          <span className="text-[10px] font-mono tracking-widest text-pink-600 font-black mt-1">
             FOREVER
           </span>
         </div>
@@ -51,7 +51,7 @@ export const InfinityDuo: React.FC = () => {
           whileHover={{ scale: 1.04, y: -4 }}
           className="flex flex-col items-center"
         >
-          <div className="relative w-36 h-44 sm:w-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-pink-400/60 shadow-[0_0_25px_rgba(236,72,153,0.4)] group">
+          <div className="relative w-36 h-44 sm:w-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-pink-400 shadow-[0_8px_25px_rgba(236,72,153,0.35)] group">
             <img
               src={ruhiImg}
               alt="Rukmani (Ruhi)"
@@ -71,14 +71,14 @@ export const InfinityDuo: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full p-4 rounded-2xl bg-slate-900/60 border border-amber-400/30 backdrop-blur-md text-center max-w-lg mt-2"
+        className="w-full p-4 rounded-2xl bg-white/95 border border-amber-300/80 backdrop-blur-md text-center max-w-lg mt-2 shadow-md"
       >
-        <div className="flex items-center justify-center gap-2 text-amber-300 text-xs sm:text-sm font-semibold mb-1">
-          <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
+        <div className="flex items-center justify-center gap-2 text-amber-800 text-xs sm:text-sm font-extrabold mb-1">
+          <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
           <span>रूह से जुड़ा भाई-बहन का पवित्र रिश्ता</span>
-          <Sparkles className="w-4 h-4 text-amber-300" />
+          <Sparkles className="w-4 h-4 text-amber-500" />
         </div>
-        <p className="text-xs text-purple-100/90 leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-800 font-semibold leading-relaxed">
           "हर परिस्थिति में एक दूसरे की ढाल, हर खुशी और गम में एक दूसरे का हाथ थामे...
           मोहित और रूही की यह जोड़ी दुनिया की सबसे प्यारी जोड़ी है।"
         </p>

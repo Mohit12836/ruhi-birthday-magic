@@ -79,13 +79,13 @@ export const SkyLantern: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center p-4 rounded-2xl bg-amber-500/10 border border-amber-400/40 backdrop-blur-md"
+          className="text-center p-4 rounded-2xl bg-white/95 border border-amber-300 backdrop-blur-md shadow-md"
         >
-          <div className="flex items-center justify-center gap-2 text-amber-300 font-bold mb-1">
-            <Sparkles className="w-4 h-4 animate-spin" />
+          <div className="flex items-center justify-center gap-2 text-amber-800 font-bold mb-1">
+            <Sparkles className="w-4 h-4 animate-spin text-amber-500" />
             <span>लालटेन सितारों के पार पहुँच गया! ✨</span>
           </div>
-          <p className="text-xs text-amber-200/80">
+          <p className="text-xs text-slate-800 font-medium">
             आपकी हर मन्नत और भाई की हर दुआ कुबूल हो चुकी है।
           </p>
         </motion.div>

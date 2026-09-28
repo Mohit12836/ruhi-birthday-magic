@@ -92,14 +92,14 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
           className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
             isPlayingSong
               ? 'bg-pink-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)] animate-pulse'
-              : 'bg-slate-900/70 border border-purple-500/30 text-pink-300 hover:bg-pink-600/30'
+              : 'bg-white/85 border border-purple-200 text-pink-700 hover:bg-pink-50 shadow-sm'
           }`}
         >
           <Music className="w-3.5 h-3.5" />
           <span>{isPlayingSong ? 'गाने की धुन चल रही है 🎵' : 'केक सॉन्ग चालू करें 🎶'}</span>
         </button>
 
-        <span className="text-[11px] font-semibold text-purple-200/80 px-2.5 py-1 rounded-full bg-slate-900/50 border border-purple-500/20">
+        <span className="text-[11px] font-bold text-purple-950 px-2.5 py-1 rounded-full bg-white/85 border border-purple-200 shadow-sm">
           {!candlesBlown
             ? '1. मोमबत्ती बुझाएं'
             : !cakeCut
@@ -236,7 +236,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
               <Flame className="w-5 h-5 text-amber-200" />
               <span>बटन से फूँक मारें (Blow Candles)</span>
             </motion.button>
-            <p className="text-[11px] text-purple-200/70">
+            <p className="text-[11px] text-slate-600 font-medium">
               (या मोमबत्तियों की लौ पर डायरेक्ट टच करके भी बुझा सकती हैं)
             </p>
           </motion.div>
@@ -249,8 +249,8 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center gap-3 w-full"
           >
-            <div className="px-4 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-xs sm:text-sm font-semibold flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-emerald-300 animate-spin" />
+            <div className="px-4 py-1.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm">
+              <Sparkles className="w-4 h-4 text-emerald-600 animate-spin" />
               <span>विश मांगी गई! अब केक काटने का समय है 🎂</span>
             </div>
 
@@ -258,7 +258,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
               onClick={handleSliceCake}
-              className="flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 text-white font-extrabold text-sm sm:text-base shadow-[0_0_30px_rgba(244,114,182,0.7)] cursor-pointer animate-bounce"
+              className="flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 text-white font-extrabold text-sm sm:text-base shadow-[0_8px_30px_rgba(244,114,182,0.4)] cursor-pointer animate-bounce"
             >
               <Utensils className="w-5 h-5 text-amber-200" />
               <span>🍰 हाथ से केक काटें (Slice with Knife)</span>
@@ -271,16 +271,16 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-4 rounded-3xl bg-slate-900/85 border border-pink-400/50 backdrop-blur-xl shadow-2xl flex flex-col items-center gap-3 max-w-md w-full"
+            className="p-4 rounded-3xl bg-white/95 border border-pink-300/80 backdrop-blur-xl shadow-2xl flex flex-col items-center gap-3 max-w-md w-full"
           >
-            <div className="flex items-center gap-2 text-pink-300 font-extrabold text-sm">
-              <Heart className="w-4 h-4 text-rose-400 fill-rose-400 animate-pulse" />
+            <div className="flex items-center gap-2 text-pink-700 font-extrabold text-sm">
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse" />
               <span>सबसे पहला बाइट तेरे भाई मोहित के नाम!</span>
-              <Heart className="w-4 h-4 text-rose-400 fill-rose-400 animate-pulse" />
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse" />
             </div>
 
             {/* Mohit Bhaiya Portrait Card */}
-            <div className="relative w-28 h-32 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.6)] group">
+            <div className="relative w-28 h-32 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-[0_8px_20px_rgba(251,191,36,0.4)] group">
               <img
                 src={mohitImg}
                 alt="तेरा भाई मोहित"
@@ -293,7 +293,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
               </div>
             </div>
 
-            <p className="text-xs text-purple-200/90 max-w-xs leading-relaxed">
+            <p className="text-xs text-slate-800 max-w-xs leading-relaxed font-medium">
               "रूही, केक कट चुका है! नीचे दिए गए बटन पर टैप करके सबसे पहला बाइट
               अपने भाई मोहित को खिलाओ!"
             </p>
@@ -302,7 +302,7 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
               onClick={handleFeedMohit}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 text-white font-extrabold text-sm shadow-[0_0_25px_rgba(244,63,94,0.7)] cursor-pointer animate-pulse"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 text-white font-extrabold text-sm shadow-[0_6px_20px_rgba(244,63,94,0.4)] cursor-pointer animate-pulse"
             >
               <span>🍰 तेरे भाई मोहित को खिलाएं (Feed First Bite) ❤️</span>
             </motion.button>
@@ -314,22 +314,22 @@ export const InteractiveCake: React.FC<InteractiveCakeProps> = ({ onComplete }) 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="p-4 rounded-3xl bg-gradient-to-r from-pink-500/25 via-purple-500/25 to-amber-500/25 border-2 border-pink-400/60 backdrop-blur-xl shadow-2xl flex flex-col items-center gap-2 max-w-md w-full"
+            className="p-4 rounded-3xl bg-white/95 border-2 border-pink-300/90 backdrop-blur-xl shadow-2xl flex flex-col items-center gap-2 max-w-md w-full"
           >
-            <div className="flex items-center gap-2 text-amber-300 font-extrabold text-base">
-              <Sparkles className="w-5 h-5 text-amber-300 animate-spin" />
+            <div className="flex items-center gap-2 text-amber-600 font-black text-base">
+              <Sparkles className="w-5 h-5 text-amber-500 animate-spin" />
               <span>तेरे भाई मोहित ने पहला बाइट खा लिया! 😋🍰</span>
-              <Sparkles className="w-5 h-5 text-amber-300 animate-spin" />
+              <Sparkles className="w-5 h-5 text-amber-500 animate-spin" />
             </div>
 
-            <p className="text-xs sm:text-sm text-pink-100 font-medium leading-relaxed italic">
+            <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed italic">
               "वाह रूही! बहुत मीठा और स्वादिष्ट केक है! तेरे भाई मोहित की तरफ से तुझे
               जन्मदिन की बहुत-बहुत शुभकामनाएं मेरी प्यारी बहना! तेरा भाई तुझसे बहुत
               प्यार करता है!"
             </p>
 
-            <div className="flex items-center gap-1.5 mt-1 text-[11px] text-pink-300/80">
-              <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" />
+            <div className="flex items-center gap-1.5 mt-1 text-[11px] text-pink-700 font-bold">
+              <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
               <span>भाई-बहन का अटूट प्यार सदा बना रहे ✨</span>
             </div>
           </motion.div>

@@ -44,13 +44,13 @@ export const BalloonPop: React.FC<BalloonPopProps> = ({ balloons }) => {
   return (
     <div className="flex flex-col items-center justify-center max-w-2xl mx-auto py-3 w-full">
       {/* Banner */}
-      <div className="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-amber-200 mb-3 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-900/60 via-pink-900/60 to-amber-900/60 border border-amber-400/40 shadow-sm">
-        <Gift className="w-4 h-4 text-amber-300 animate-bounce" />
+      <div className="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-purple-950 mb-3 px-4 py-1.5 rounded-full bg-white/90 border border-purple-200/80 shadow-sm">
+        <Gift className="w-4 h-4 text-amber-500 animate-bounce" />
         <span>गुब्बारे फोड़ें: {poppedIds.length} / {balloons.length} गिफ्ट्स अनलॉक हो चुके हैं</span>
-        <Sparkles className="w-4 h-4 text-pink-300" />
+        <Sparkles className="w-4 h-4 text-pink-500" />
       </div>
 
-      <p className="text-xs text-purple-200/90 mb-4 text-center">
+      <p className="text-xs text-slate-700 font-medium mb-4 text-center">
         "हर गुब्बारे के पीछे तेरे भाई मोहित का एक अनमोल वादा और गिफ्ट है—क्योंकि तेरे भाई का सब कुछ रूही का है!"
       </p>
 
@@ -75,26 +75,26 @@ export const BalloonPop: React.FC<BalloonPopProps> = ({ balloons }) => {
                       ease: 'easeInOut',
                     }}
                     onClick={(e) => handlePop(b.id, e)}
-                    className={`relative w-20 h-24 sm:w-24 sm:h-28 rounded-full bg-gradient-to-br ${b.color} shadow-[0_10px_25px_rgba(0,0,0,0.5)] cursor-pointer flex flex-col items-center justify-center border-t-2 border-white/50 select-none`}
+                    className={`relative w-20 h-24 sm:w-24 sm:h-28 rounded-full bg-gradient-to-br ${b.color} shadow-[0_10px_25px_rgba(0,0,0,0.2)] cursor-pointer flex flex-col items-center justify-center border-t-2 border-white/60 select-none`}
                     title="क्लिक करके गिफ्ट अनलॉक करें!"
                   >
                     {/* Balloon Shine */}
-                    <div className="absolute top-3 left-4 w-3.5 h-6 bg-white/40 rounded-full blur-[1px] transform -rotate-25" />
+                    <div className="absolute top-3 left-4 w-3.5 h-6 bg-white/50 rounded-full blur-[1px] transform -rotate-25" />
                     <span className="text-[11px] font-black text-white drop-shadow-md text-center px-1">
                       {b.label}
                     </span>
                     {/* Balloon Knot and String */}
                     <div className="absolute -bottom-2 w-2.5 h-2.5 bg-pink-800 rounded-sm" />
-                    <div className="absolute -bottom-6 w-0.5 h-5 bg-white/50" />
+                    <div className="absolute -bottom-6 w-0.5 h-5 bg-pink-300" />
                   </motion.div>
                 ) : (
                   <motion.div
                     initial={{ scale: 0, rotate: -20 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-amber-500/20 border-2 border-amber-400/60 flex flex-col items-center justify-center p-2 text-center shadow-[0_0_15px_rgba(251,191,36,0.4)]"
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-amber-50 border-2 border-amber-300 flex flex-col items-center justify-center p-2 text-center shadow-[0_4px_15px_rgba(251,191,36,0.3)]"
                   >
-                    <Gift className="w-6 h-6 text-amber-300 mb-1 animate-pulse" />
-                    <span className="text-[10px] font-black text-amber-200">
+                    <Gift className="w-6 h-6 text-amber-500 mb-1 animate-pulse" />
+                    <span className="text-[10px] font-black text-amber-900">
                       तोहफा खुला!
                     </span>
                   </motion.div>
@@ -114,18 +114,18 @@ export const BalloonPop: React.FC<BalloonPopProps> = ({ balloons }) => {
               key={b.id}
               initial={{ opacity: 0, y: 12, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-slate-900/90 via-purple-950/80 to-slate-900/90 border border-amber-400/50 backdrop-blur-xl text-left text-xs sm:text-sm text-pink-100 flex items-start gap-3 shadow-lg"
+              className="p-3.5 sm:p-4 rounded-2xl bg-white/95 border border-purple-200/90 backdrop-blur-xl text-left text-xs sm:text-sm text-slate-800 flex items-start gap-3 shadow-md"
             >
-              <div className="p-2 rounded-xl bg-amber-500/25 border border-amber-400/40 text-amber-300 shrink-0 mt-0.5">
+              <div className="p-2 rounded-xl bg-amber-100 border border-amber-300 text-amber-700 shrink-0 mt-0.5">
                 <Gift className="w-4 h-4" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="leading-relaxed font-medium text-amber-100">
+                <p className="leading-relaxed font-semibold text-slate-800">
                   {b.blessing}
                 </p>
-                <div className="flex items-center gap-1.5 mt-2 text-[10px] text-pink-300/80">
-                  <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />
-                  <span className="font-semibold">मोहित का सब कुछ रूही का है! 💖</span>
+                <div className="flex items-center gap-1.5 mt-2 text-[10px] text-pink-700 font-bold">
+                  <Heart className="w-3 h-3 text-rose-500 fill-rose-500" />
+                  <span>मोहित का सब कुछ रूही का है! 💖</span>
                 </div>
               </div>
             </motion.div>

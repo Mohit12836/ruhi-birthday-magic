@@ -41,16 +41,16 @@ export const CosmicSkyCanvas: React.FC<CosmicSkyCanvasProps> = ({ realmId }) => 
 
     const getRealmColors = (realm: 1 | 2 | 3 | 4): string[] => {
       switch (realm) {
-        case 1: // Starlight Gate
-          return ['#a78bfa', '#c084fc', '#e0e7ff', '#ffffff', '#38bdf8'];
-        case 2: // Cyber Citadel
-          return ['#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899', '#f43f5e'];
-        case 3: // Enchanted Garden
-          return ['#34d399', '#10b981', '#f472b6', '#fbbf24', '#a7f3d0'];
-        case 4: // Hall of Eternity
-          return ['#fbbf24', '#f59e0b', '#d97706', '#fef08a', '#e0e7ff'];
+        case 1: // Starlight Gate: Vivid purple, fuchsia, royal blue, rose, gold
+          return ['#9333ea', '#c026d3', '#2563eb', '#e11d48', '#d97706'];
+        case 2: // Cyber Citadel: Electric cyan, fuchsia, indigo, rose, gold
+          return ['#0284c7', '#d946ef', '#4f46e5', '#e11d48', '#f59e0b'];
+        case 3: // Enchanted Garden: Emerald, mint, rose pink, warm amber, violet
+          return ['#059669', '#10b981', '#db2777', '#d97706', '#7c3aed'];
+        case 4: // Hall of Eternity: Rich gold, amber, deep rose, royal purple, cyan
+          return ['#d97706', '#b45309', '#e11d48', '#9333ea', '#0284c7'];
         default:
-          return ['#ffffff', '#fbbf24'];
+          return ['#9333ea', '#d97706', '#e11d48'];
       }
     };
 
@@ -65,8 +65,8 @@ export const CosmicSkyCanvas: React.FC<CosmicSkyCanvasProps> = ({ realmId }) => 
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * (realmId === 2 ? 0.8 : 0.4),
           vy: realmId === 3 ? -Math.random() * 0.6 - 0.2 : (Math.random() - 0.5) * 0.4,
-          size: Math.random() * (realmId === 4 ? 3.5 : 2.5) + 1,
-          alpha: Math.random() * 0.7 + 0.2,
+          size: Math.random() * (realmId === 4 ? 3.5 : 2.5) + 1.2,
+          alpha: Math.random() * 0.5 + 0.45,
           alphaSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
           color: colors[Math.floor(Math.random() * colors.length)],
         });
@@ -81,15 +81,15 @@ export const CosmicSkyCanvas: React.FC<CosmicSkyCanvasProps> = ({ realmId }) => 
 
       // Realm 1 constellation lines between nearby stars
       if (realmId === 1) {
-        ctx.lineWidth = 0.5;
+        ctx.lineWidth = 0.75;
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 110) {
-              const lineAlpha = (1 - dist / 110) * 0.18;
-              ctx.strokeStyle = `rgba(192, 132, 252, ${lineAlpha})`;
+              const lineAlpha = (1 - dist / 110) * 0.28;
+              ctx.strokeStyle = `rgba(147, 51, 234, ${lineAlpha})`;
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);

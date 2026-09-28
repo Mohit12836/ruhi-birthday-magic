@@ -36,32 +36,32 @@ export const App: React.FC = () => {
   const getRealmBackgroundClass = (id: 1 | 2 | 3 | 4) => {
     switch (id) {
       case 1:
-        // Starlight Gate: Deep indigo/violet cosmic night
-        return 'from-[#0b0618] via-[#1b0b2e] to-[#0e071e]';
+        // Starlight Gate: Luminous lilac, pearl aurora & celestial pink
+        return 'from-[#fbf7ff] via-[#f5f3ff] to-[#fce7f3]';
       case 2:
-        // Cyber Royal Citadel: Deep sapphire & electric violet
-        return 'from-[#030718] via-[#081534] to-[#0e0624]';
+        // Cyber Royal Citadel: Rose quartz, champagne & soft cyan tint
+        return 'from-[#fff1f2] via-[#faf5ff] to-[#f0fdfa]';
       case 3:
-        // Enchanted Dream Garden: Bioluminescent emerald & mystic teal
-        return 'from-[#031510] via-[#082b20] to-[#04111d]';
+        // Enchanted Dream Garden: Morning dew meadow, peach blossom & petal pink
+        return 'from-[#f0fdf4] via-[#fff7ed] to-[#fdf2f8]';
       case 4:
-        // Golden Hall of Eternity: Royal golden amber & obsidian
-        return 'from-[#1a0f02] via-[#2c1704] to-[#160824]';
+        // Golden Hall of Eternity: Royal ivory, golden champagne & warm honey
+        return 'from-[#fffbeb] via-[#fef3c7] to-[#fff1f2]';
       default:
-        return 'from-[#0b0618] via-[#1b0b2e] to-[#0e071e]';
+        return 'from-[#fbf7ff] via-[#f5f3ff] to-[#fce7f3]';
     }
   };
 
   const getRealmGlowOverlay = (id: 1 | 2 | 3 | 4) => {
     switch (id) {
       case 1:
-        return 'radial-gradient(ellipse at 50% 20%, rgba(168, 85, 247, 0.22) 0%, rgba(0, 0, 0, 0) 70%)';
+        return 'radial-gradient(ellipse at 50% 20%, rgba(216, 180, 254, 0.5) 0%, rgba(251, 247, 255, 0) 70%)';
       case 2:
-        return 'radial-gradient(ellipse at 50% 20%, rgba(6, 182, 212, 0.22) 0%, rgba(0, 0, 0, 0) 70%)';
+        return 'radial-gradient(ellipse at 50% 20%, rgba(244, 114, 182, 0.4) 0%, rgba(255, 241, 242, 0) 70%)';
       case 3:
-        return 'radial-gradient(ellipse at 50% 20%, rgba(16, 185, 129, 0.22) 0%, rgba(0, 0, 0, 0) 70%)';
+        return 'radial-gradient(ellipse at 50% 20%, rgba(52, 211, 153, 0.4) 0%, rgba(240, 253, 244, 0) 70%)';
       case 4:
-        return 'radial-gradient(ellipse at 50% 20%, rgba(245, 158, 11, 0.25) 0%, rgba(0, 0, 0, 0) 70%)';
+        return 'radial-gradient(ellipse at 50% 20%, rgba(251, 191, 36, 0.45) 0%, rgba(255, 251, 235, 0) 70%)';
       default:
         return 'none';
     }
@@ -71,7 +71,7 @@ export const App: React.FC = () => {
     <div
       className={`min-h-screen w-full bg-gradient-to-b ${getRealmBackgroundClass(
         realmId
-      )} transition-colors duration-1000 relative overflow-x-clip text-slate-100 font-sans`}
+      )} transition-colors duration-1000 relative overflow-x-clip text-slate-800 font-sans`}
     >
       {/* Ambient Radial Nebula Highlight */}
       <div

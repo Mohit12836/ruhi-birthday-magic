@@ -258,7 +258,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
           <div className="max-w-xl mx-auto w-full my-4 flex flex-col items-center">
             {quiz && (
               <div className="w-full space-y-3">
-                <p className="text-center font-bold text-amber-200 text-sm sm:text-base mb-4">
+                <p className="text-center font-extrabold text-purple-950 text-base sm:text-lg mb-4">
                   ❓ {quiz.question}
                 </p>
 
@@ -274,11 +274,11 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
                       }
                       className={`w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between cursor-pointer ${
                         isChosen
-                          ? 'bg-purple-600/40 border-pink-400 text-white shadow-[0_0_25px_rgba(236,72,153,0.5)]'
-                          : 'bg-slate-900/60 border-purple-500/30 text-purple-100 hover:bg-purple-900/30'
+                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 border-pink-400 text-white shadow-[0_4px_20px_rgba(236,72,153,0.35)]'
+                          : 'bg-white/90 border-purple-200/80 text-purple-950 hover:bg-purple-50 shadow-sm'
                       }`}
                     >
-                      <span className="text-xs sm:text-sm font-medium">
+                      <span className="text-xs sm:text-sm font-semibold">
                         {opt.label}
                       </span>
                       {isChosen && (
@@ -294,9 +294,9 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-pink-500/25 to-purple-500/25 border border-pink-400/50 text-center shadow-lg"
+                      className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-pink-100 to-purple-100 border border-pink-300/80 text-center shadow-md"
                     >
-                      <p className="text-xs sm:text-sm font-bold text-pink-200">
+                      <p className="text-xs sm:text-sm font-bold text-pink-900">
                         🎉 {selected.reaction}
                       </p>
                     </motion.div>
@@ -324,16 +324,16 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className={`relative rounded-3xl overflow-hidden shadow-[0_0_35px_rgba(0,0,0,0.6)] ${
+              className={`relative rounded-3xl overflow-hidden shadow-[0_12px_35px_rgba(0,0,0,0.15)] ${
                 isBoss
-                  ? 'border-4 border-amber-400 shadow-[0_0_40px_rgba(251,191,36,0.6)] ring-4 ring-pink-500/30'
-                  : 'border-2 border-purple-400/60 shadow-[0_0_25px_rgba(168,85,247,0.4)]'
+                  ? 'border-4 border-amber-400 shadow-[0_12px_40px_rgba(251,191,36,0.35)] ring-4 ring-pink-300/50'
+                  : 'border-2 border-purple-300 shadow-[0_12px_30px_rgba(168,85,247,0.2)]'
               }`}
             >
               {/* Subtle top crown for Boss Lady */}
               {isBoss && (
-                <div className="absolute top-3 right-3 z-10 p-2 rounded-full bg-slate-950/80 border border-amber-300 shadow-xl">
-                  <Crown className="w-5 h-5 text-amber-300 animate-pulse" />
+                <div className="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/90 border border-amber-300 shadow-xl">
+                  <Crown className="w-5 h-5 text-amber-500 animate-pulse" />
                 </div>
               )}
 
@@ -345,7 +345,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             </motion.div>
 
             {currentChapter.imageCaption && (
-              <p className="text-xs sm:text-sm text-center text-amber-200 font-semibold mt-3 px-4 py-1.5 rounded-full bg-slate-900/60 border border-amber-400/40 shadow-md">
+              <p className="text-xs sm:text-sm text-center text-amber-950 font-bold mt-3 px-4 py-1.5 rounded-full bg-white/90 border border-amber-300/80 shadow-md">
                 {currentChapter.imageCaption}
               </p>
             )}
@@ -362,16 +362,16 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             <motion.div
               animate={{ rotate: 360, scale: [1, 1.15, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-              className="w-28 h-28 rounded-full border-4 border-dashed border-pink-400 flex items-center justify-center p-3 mb-6 shadow-[0_0_45px_rgba(236,72,153,0.7)]"
+              className="w-28 h-28 rounded-full border-4 border-dashed border-pink-500 bg-white/70 flex items-center justify-center p-3 mb-6 shadow-[0_8px_30px_rgba(236,72,153,0.3)]"
             >
-              <Compass className="w-14 h-14 text-pink-300 animate-pulse" />
+              <Compass className="w-14 h-14 text-pink-600 animate-pulse" />
             </motion.div>
-            <p className="text-sm sm:text-base text-purple-200 mb-6 font-bold">
+            <p className="text-sm sm:text-base text-purple-950 mb-6 font-extrabold">
               ⚡ अगले आयाम की सुपर ऊर्जा तैयार है... क्या तुम तैयार हो?
             </p>
             <button
               onClick={handleNext}
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-extrabold text-base shadow-[0_0_35px_rgba(236,72,153,0.7)] cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white font-extrabold text-base shadow-[0_8px_25px_rgba(236,72,153,0.4)] cursor-pointer hover:scale-105 active:scale-95 transition-transform"
             >
               🚀 अगले आयाम में प्रवेश करें (Enter Next Realm)
             </button>
@@ -388,7 +388,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             >
               🌸✨🌿
             </motion.div>
-            <p className="text-sm sm:text-base text-emerald-200 leading-relaxed px-4 py-3 rounded-2xl bg-emerald-950/40 border border-emerald-400/40 backdrop-blur-md shadow-lg font-medium">
+            <p className="text-sm sm:text-base text-emerald-950 leading-relaxed px-5 py-4 rounded-2xl bg-white/90 border border-emerald-300/80 backdrop-blur-md shadow-lg font-medium">
               यहाँ का हर फूल, हर खुशबू सिर्फ एक ही बात कह रही है: हमारी प्यारी
               रूही का आज जन्मदिन है! इस उपवन की जादुई तितलियाँ तुम्हारे लिए खुशियों
               के हार लेकर आई हैं।
@@ -413,12 +413,12 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.15 }}
-                className="p-3.5 sm:p-4 rounded-2xl bg-slate-900/80 border border-amber-400/40 backdrop-blur-md text-left text-xs sm:text-sm text-amber-100 flex items-start gap-3 shadow-md"
+                className="p-3.5 sm:p-4 rounded-2xl bg-white/90 border border-amber-300/70 backdrop-blur-md text-left text-xs sm:text-sm text-slate-800 flex items-start gap-3 shadow-md"
               >
-                <div className="p-1 rounded-full bg-amber-500/25 text-amber-300 mt-0.5 shrink-0">
+                <div className="p-1 rounded-full bg-amber-100 text-amber-700 mt-0.5 shrink-0">
                   <Sparkles className="w-3.5 h-3.5" />
                 </div>
-                <span>{promise}</span>
+                <span className="font-medium">{promise}</span>
               </motion.div>
             ))}
           </div>
@@ -448,10 +448,10 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             >
               🎉🎂👑
             </motion.div>
-            <h2 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-pink-400 to-cyan-300 drop-shadow-[0_0_30px_rgba(251,191,36,0.8)] mb-3">
+            <h2 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-pink-600 to-purple-800 drop-shadow-sm mb-3">
               HAPPY BIRTHDAY RUHI!
             </h2>
-            <p className="text-sm sm:text-base text-amber-200 font-medium max-w-md leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-800 font-medium max-w-md leading-relaxed">
               आज का दिन, आज की रात, और आने वाला हर साल तुम्हारे लिए ढेर सारी
               खुशियाँ, अपार सफलता और अनंत मुस्कान लेकर आए!
             </p>
@@ -466,7 +466,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
                     origin: { y: 0.5 },
                   });
                 }}
-                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-extrabold text-sm sm:text-base shadow-[0_0_35px_rgba(251,191,36,0.7)] cursor-pointer hover:scale-105 active:scale-95 transition-transform"
+                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-extrabold text-sm sm:text-base shadow-[0_8px_30px_rgba(244,63,94,0.4)] cursor-pointer hover:scale-105 active:scale-95 transition-transform"
               >
                 ✨ फिर से आतिशबाज़ी और एयर हॉर्न बजाएं ✨
               </button>
@@ -477,22 +477,22 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
       case 'eternal_signoff':
         return (
           <div className="flex flex-col items-center justify-center text-center max-w-lg mx-auto py-4">
-            <div className="w-20 h-20 rounded-full border-2 border-pink-400 bg-pink-500/20 flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(236,72,153,0.5)]">
-              <Heart className="w-10 h-10 text-pink-400 fill-pink-400 animate-pulse" />
+            <div className="w-20 h-20 rounded-full border-2 border-pink-400 bg-pink-100 flex items-center justify-center mb-4 shadow-[0_6px_25px_rgba(236,72,153,0.25)]">
+              <Heart className="w-10 h-10 text-pink-600 fill-pink-600 animate-pulse" />
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-200 to-amber-200 mb-2">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-700 to-purple-900 mb-2">
               सदा खुश रहो मेरी जान!
             </h3>
-            <p className="text-xs sm:text-sm text-purple-200/90 max-w-sm mb-6 font-medium">
+            <p className="text-xs sm:text-sm text-slate-800 max-w-sm mb-6 font-semibold">
               "तेरा भाई मोहित हमेशा तेरे साथ, तेरी हर खुशी और मुस्कान के लिए जान लुटाने को तैयार है!"
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={() => handleJumpToChapter(0)}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-purple-600/40 border border-purple-400/50 text-purple-100 hover:bg-purple-600/60 font-semibold text-xs sm:text-sm cursor-pointer transition-all"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/90 border border-purple-300 text-purple-900 hover:bg-purple-100 font-semibold text-xs sm:text-sm cursor-pointer transition-all shadow-sm"
               >
-                <RotateCcw className="w-4 h-4 text-purple-300" />
+                <RotateCcw className="w-4 h-4 text-purple-700" />
                 <span>शुरुआत से दोबारा देखें (Replay)</span>
               </button>
 
@@ -523,12 +523,12 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
         {/* Row 1: Realm Badge & Master Audio/Voice Controls */}
         <div className="w-full flex items-center justify-between gap-2">
           {/* Realm Indicator Badge */}
-          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/70 border border-purple-500/40 backdrop-blur-md shadow-sm">
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
-            <span className="text-[11px] sm:text-xs font-bold text-purple-200">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-purple-300/70 backdrop-blur-md shadow-sm">
+            <div className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
+            <span className="text-[11px] sm:text-xs font-bold text-purple-950">
               {currentChapter.realmName}
             </span>
-            <span className="text-[10px] text-purple-400/80 hidden sm:inline">
+            <span className="text-[10px] text-purple-700/80 hidden sm:inline">
               • {currentChapter.realmTag}
             </span>
           </div>
@@ -544,8 +544,8 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
               title="Toggle 100% Party Energy"
               className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all cursor-pointer ${
                 partyMode
-                  ? 'bg-gradient-to-r from-pink-600 to-amber-500 text-white shadow-[0_0_15px_rgba(236,72,153,0.6)] animate-pulse'
-                  : 'bg-slate-900/60 text-slate-400 border border-purple-500/20'
+                  ? 'bg-gradient-to-r from-pink-600 to-amber-500 text-white shadow-[0_0_15px_rgba(236,72,153,0.4)] animate-pulse'
+                  : 'bg-white/80 text-slate-700 border border-purple-300/60 shadow-sm'
               }`}
             >
               <Zap className="w-3.5 h-3.5 text-amber-200 fill-amber-200" />
@@ -556,20 +556,20 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             <button
               onClick={handleToggleVoice}
               title={voiceEnabled ? 'Voiceover Enabled' : 'Voiceover Disabled'}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-semibold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer ${
                 voiceEnabled
-                  ? 'bg-pink-600/40 border-pink-400 text-pink-200 shadow-[0_0_15px_rgba(236,72,153,0.4)]'
-                  : 'bg-slate-900/60 border-purple-500/30 text-slate-400'
+                  ? 'bg-pink-100 border-pink-400 text-pink-700 shadow-sm'
+                  : 'bg-white/80 border-purple-300/60 text-slate-700 shadow-sm'
               }`}
             >
               {voiceEnabled ? (
                 <>
-                  <Mic className="w-3.5 h-3.5 text-pink-300 animate-pulse" />
+                  <Mic className="w-3.5 h-3.5 text-pink-600 animate-pulse" />
                   <span className="hidden sm:inline">आवाज़ चालू</span>
                 </>
               ) : (
                 <>
-                  <MicOff className="w-3.5 h-3.5 text-slate-400" />
+                  <MicOff className="w-3.5 h-3.5 text-slate-500" />
                   <span className="hidden sm:inline">आवाज़ बंद</span>
                 </>
               )}
@@ -579,19 +579,19 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             <button
               onClick={onToggleMute}
               title={isMuted ? 'Unmute Sound' : 'Mute Sound'}
-              className="p-2 rounded-full bg-slate-900/70 border border-purple-500/30 text-purple-200 hover:text-white backdrop-blur-md cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-sm"
+              className="p-2 rounded-full bg-white/85 border border-purple-300/60 text-purple-900 hover:bg-white backdrop-blur-md cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-sm"
             >
               {isMuted ? (
-                <VolumeX className="w-4 h-4 text-rose-400" />
+                <VolumeX className="w-4 h-4 text-rose-500" />
               ) : (
-                <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+                <Volume2 className="w-4 h-4 text-emerald-600 animate-pulse" />
               )}
             </button>
           </div>
         </div>
 
         {/* Row 2: 🎧 DJ PARTY SOUNDBOARD (Air Horn, Cheer, Bass Drop, Ruhi Song) */}
-        <div className="w-full flex items-center justify-between gap-1.5 p-1.5 rounded-2xl bg-slate-950/80 border border-purple-500/30 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] overflow-x-auto scrollbar-none">
+        <div className="w-full flex items-center justify-between gap-1.5 p-1.5 rounded-2xl bg-white/90 border border-purple-200/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(168,85,247,0.15)] overflow-x-auto scrollbar-none">
           {/* Track Switcher Pills */}
           <div className="flex items-center gap-1 shrink-0">
             <button
@@ -600,7 +600,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
               className={`px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
                 activeTrack === 'party_remix'
                   ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-sm ring-1 ring-pink-300'
-                  : 'text-purple-300 hover:text-white'
+                  : 'text-purple-900/80 hover:text-purple-950 hover:bg-purple-100/50'
               }`}
             >
               🔥 Party Remix
@@ -608,10 +608,10 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             <button
               onClick={() => handleChangeTrack('bday_song')}
               title="Happy Birthday Melody"
-              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
                 activeTrack === 'bday_song'
                   ? 'bg-pink-600 text-white shadow-sm'
-                  : 'text-purple-300 hover:text-white'
+                  : 'text-purple-900/80 hover:text-purple-950 hover:bg-purple-100/50'
               }`}
             >
               🎂 Song
@@ -619,10 +619,10 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             <button
               onClick={() => handleChangeTrack('royal')}
               title="Royal Symphony"
-              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-2 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
                 activeTrack === 'royal'
                   ? 'bg-amber-600 text-white shadow-sm'
-                  : 'text-purple-300 hover:text-white'
+                  : 'text-purple-900/80 hover:text-purple-950 hover:bg-purple-100/50'
               }`}
             >
               👑 Royal
@@ -632,21 +632,21 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             <button
               onClick={handleTogglePlayMusic}
               title={isPlayingMusic ? 'Pause Music' : 'Play Music'}
-              className="p-1.5 rounded-full bg-slate-900 border border-purple-500/40 text-purple-200 hover:text-white cursor-pointer"
+              className="p-1.5 rounded-full bg-purple-50 border border-purple-200/80 text-purple-700 hover:text-purple-950 cursor-pointer shadow-sm"
             >
               {isPlayingMusic ? (
-                <Pause className="w-3 h-3 text-pink-300" />
+                <Pause className="w-3 h-3 text-pink-600" />
               ) : (
-                <Play className="w-3 h-3 text-emerald-300" />
+                <Play className="w-3 h-3 text-emerald-600" />
               )}
             </button>
           </div>
 
           {/* Interactive DJ Sound Buttons */}
-          <div className="flex items-center gap-1.5 shrink-0 pl-2 border-l border-purple-500/30">
+          <div className="flex items-center gap-1.5 shrink-0 pl-2 border-l border-purple-200">
             <button
               onClick={handleAirHornBlast}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-pink-600/30 hover:bg-pink-600 text-pink-200 hover:text-white border border-pink-400/40 text-[10px] sm:text-xs font-black cursor-pointer transition-all active:scale-90"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-pink-100 hover:bg-pink-600 text-pink-700 hover:text-white border border-pink-300/70 text-[10px] sm:text-xs font-black cursor-pointer transition-all active:scale-90"
               title="DJ Air Horn Blast"
             >
               <span>📢 पों-पों!</span>
@@ -654,7 +654,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
 
             <button
               onClick={handleCrowdCheerBlast}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-600/30 hover:bg-amber-600 text-amber-200 hover:text-white border border-amber-400/40 text-[10px] sm:text-xs font-black cursor-pointer transition-all active:scale-90"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-amber-100 hover:bg-amber-600 text-amber-800 hover:text-white border border-amber-300/70 text-[10px] sm:text-xs font-black cursor-pointer transition-all active:scale-90"
               title="Crowd Cheer & Applause"
             >
               <span>🥳 जयकार!</span>
@@ -662,7 +662,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
 
             <button
               onClick={handleBassDropBlast}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-cyan-600/30 hover:bg-cyan-600 text-cyan-200 hover:text-white border border-cyan-400/40 text-[10px] sm:text-xs font-black cursor-pointer transition-all active:scale-90"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-cyan-100 hover:bg-cyan-600 text-cyan-800 hover:text-white border border-cyan-300/70 text-[10px] sm:text-xs font-black cursor-pointer transition-all active:scale-90"
               title="Sub Bass Drop"
             >
               <span>⚡ बेस ड्रॉप!</span>
@@ -681,7 +681,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
       </header>
 
       {/* Progress Line */}
-      <div className="w-full bg-purple-950/40 rounded-full h-1.5 my-2.5 overflow-hidden border border-purple-800/30">
+      <div className="w-full bg-purple-200/70 rounded-full h-1.5 my-2.5 overflow-hidden border border-purple-300/50">
         <motion.div
           className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-400"
           initial={{ width: 0 }}
@@ -707,28 +707,28 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
             className="w-full flex flex-col items-center text-center"
           >
             {/* Chapter Header Chip */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-400/30 text-purple-200 text-[10px] sm:text-xs font-semibold mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100/90 border border-purple-300/80 text-purple-900 text-[10px] sm:text-xs font-bold mb-3 shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               <span>{currentChapter.badge}</span>
-              <span className="text-purple-400/60">•</span>
+              <span className="text-purple-400">•</span>
               <span>
                 {currentIdx + 1} / {CHAPTERS.length}
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-100 to-pink-200 max-w-2xl leading-tight mb-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-950 via-pink-700 to-indigo-950 max-w-2xl leading-tight mb-2 drop-shadow-sm">
               {currentChapter.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xs sm:text-sm font-semibold text-pink-300 mb-3 tracking-wide">
+            <p className="text-xs sm:text-sm font-bold text-pink-600 mb-3 tracking-wide">
               {currentChapter.subtitle}
             </p>
 
             {/* Emotional Brother Dialogue Card with Voice Button */}
-            <div className="w-full max-w-xl p-3.5 sm:p-4 rounded-2xl bg-slate-900/60 border border-purple-400/30 backdrop-blur-md shadow-md mb-4 relative group">
-              <p className="text-xs sm:text-sm text-purple-100/90 leading-relaxed font-sans italic pr-8">
+            <div className="w-full max-w-xl p-3.5 sm:p-4 rounded-2xl bg-white/90 border border-purple-200/90 backdrop-blur-xl shadow-[0_8px_30px_rgba(168,85,247,0.12)] mb-4 relative group">
+              <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans font-medium pr-8">
                 "{currentChapter.emotionalDialogue}"
               </p>
 
@@ -738,8 +738,8 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
                 title="मोहित का यह संदेश आवाज़ में सुनें"
                 className={`absolute top-3 right-3 p-1.5 rounded-full transition-all cursor-pointer ${
                   isReadingVoice
-                    ? 'bg-pink-600 text-white animate-bounce shadow-[0_0_15px_rgba(236,72,153,0.7)]'
-                    : 'bg-slate-800/80 hover:bg-pink-600/50 text-pink-300 hover:text-white'
+                    ? 'bg-pink-600 text-white animate-bounce shadow-md'
+                    : 'bg-purple-100/90 hover:bg-pink-600 text-pink-600 hover:text-white'
                 }`}
               >
                 <Music className="w-3.5 h-3.5" />
@@ -754,12 +754,12 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
 
       {/* Bottom Floating Navigation Dock */}
       <footer className="fixed bottom-4 inset-x-0 mx-auto max-w-lg px-4 z-50 pointer-events-auto">
-        <div className="p-2 sm:p-3 rounded-3xl bg-slate-950/85 border border-purple-500/40 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.8)] flex items-center justify-between gap-2">
+        <div className="p-2 sm:p-3 rounded-3xl bg-white/95 border border-purple-200/90 backdrop-blur-2xl shadow-[0_12px_40px_rgba(168,85,247,0.2)] flex items-center justify-between gap-2">
           {/* Previous Button */}
           <button
             onClick={handlePrev}
             disabled={currentIdx === 0}
-            className="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-purple-200 hover:text-white bg-slate-900/80 hover:bg-purple-900/50 disabled:opacity-30 disabled:cursor-not-allowed border border-purple-500/20 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-700 hover:text-purple-950 bg-slate-100 hover:bg-purple-50 disabled:opacity-30 disabled:cursor-not-allowed border border-slate-200 transition-all cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4" />
             <span className="hidden sm:inline">पिछला</span>
@@ -774,8 +774,8 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
                 title={`Chapter ${ch.id}: ${ch.title}`}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === currentIdx
-                    ? 'w-6 bg-gradient-to-r from-pink-400 to-amber-300 shadow-[0_0_10px_rgba(236,72,153,0.8)]'
-                    : 'w-2 bg-purple-700/50 hover:bg-purple-500/70'
+                    ? 'w-6 bg-gradient-to-r from-pink-500 to-amber-400 shadow-[0_0_10px_rgba(236,72,153,0.5)]'
+                    : 'w-2 bg-purple-200 hover:bg-purple-300'
                 }`}
               />
             ))}
@@ -785,7 +785,7 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
           <button
             onClick={handleNext}
             disabled={currentIdx === CHAPTERS.length - 1}
-            className="flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 shadow-[0_0_20px_rgba(236,72,153,0.5)] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-pink-600 via-rose-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 shadow-[0_0_20px_rgba(236,72,153,0.4)] disabled:opacity-30 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>
               {currentIdx === CHAPTERS.length - 1 ? 'पूर्ण 🎉' : 'अगला'}
