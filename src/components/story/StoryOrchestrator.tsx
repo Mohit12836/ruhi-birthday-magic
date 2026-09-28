@@ -31,6 +31,7 @@ import { LetterTypewriter } from './LetterTypewriter';
 import { WaxSealStamp } from './WaxSealStamp';
 import { AttitudeScanner } from './AttitudeScanner';
 import { InfinityDuo } from './InfinityDuo';
+import { AudioJukebox } from './AudioJukebox';
 
 // Image imports
 import ruhiInnocentImg from '../../assets/images/ruhi_innocent.jpg';
@@ -691,6 +692,9 @@ export const StoryOrchestrator: React.FC<StoryOrchestratorProps> = ({
           transition={{ duration: 0.5 }}
         />
       </div>
+
+      {/* Direct Audio Clips & Birthday Jukebox */}
+      <AudioJukebox />
 
       {/* Main Chapter Content Frame */}
       <main className="flex-1 flex flex-col items-center justify-center my-auto w-full">
