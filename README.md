@@ -1,32 +1,21 @@
-# React + TypeScript + Vite
+# The Ruhi Wonder-Verse 👑✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**"A 22-Chapter Cinematic Birthday Odyssey for Rukmani (Ruhi) — lovingly crafted by her brother Mohit Jain"**
 
-Currently, two official plugins are available:
+Live on Vercel: Deploy directly with 1 click!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🌟 Highlights
+- **4 Magical Realms:**
+  1. *The Starlight Gate* (Midnight Lock & Childhood Innocence)
+  2. *The Cyber Royal Citadel* (Boss Lady Ruhi & Aura Scanner)
+  3. *The Enchanted Dream Garden* (Interactive 3D Cake, Candle Blow, Balloon Pops & Sky Lantern)
+  4. *The Golden Hall of Eternity* (Mohit + Ruhi Duo, Handwritten Letter, Wax Seal & Supernova Fireworks)
+- **Zero-Latency Procedural Web Audio Engine** (Synthesized acoustic Happy Birthday piano, puff whoosh, balloon pop, wax snap)
+- **100% Fluid Auto-Fit Responsive** across Mobile and Desktop with Motion.dev spring animations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## 🚀 One-Click Deploy to Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMohit12836%2Fruhi-birthday-magic)
